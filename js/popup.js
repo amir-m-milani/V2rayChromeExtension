@@ -1,8 +1,15 @@
 document.getElementById('connectBtn').addEventListener('click', function () {
-    // Add your connect logic here
-    alert('Connecting...');
+    chrome.runtime.sendMessage({ action: 'connect' }, function (response) {
+        console.log('Response:', response);
+    });
 });
+
 document.getElementById('disconnectBtn').addEventListener('click', function () {
-    // Add your disconnect logic here
-    alert('Disconnecting...');
+    chrome.runtime.sendMessage({ action: 'disconnect' }, function (response) {
+        console.log('Response:', response);
+    });
+});
+
+document.getElementById('settingsBtn').addEventListener('click', function () {
+    chrome.runtime.openOptionsPage();
 });
